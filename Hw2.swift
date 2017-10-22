@@ -80,7 +80,16 @@ for (index, value) in dict {
 print ("Average age = \(sum / cnt)")
 
 
+//4
+var mySet: Set<Character> = []
 
+var s = (0..<26).map({Character(UnicodeScalar("a".unicodeScalars.first!.value + $0)!)})
+for i in 0..<26 {
+	mySet.insert(s[i])
+}
+
+
+print(Set(mySet.reversed()))
 
 
 
