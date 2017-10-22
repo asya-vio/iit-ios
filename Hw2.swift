@@ -87,11 +87,41 @@ var s = (0..<26).map({Character(UnicodeScalar("a".unicodeScalars.first!.value + 
 for i in 0..<26 {
 	mySet.insert(s[i])
 }
+print(mySet.sorted())
 
+print(Set((mySet.sorted()).reversed()))
 
-print(Set(mySet.reversed()))
+mySet.removeFirst()
 
+//приведенные в справочнике remiveLast, removeAtIndex почему-то не работают..
 
+//5
+var journal = ["Mary" : 4, "Alex":5, "Polly":2, "Max":3, "Stefan":4, "Elly":2]
+
+print(journal)
+
+journal.updateValue(4, forKey: "Polly")
+
+print(journal)
+
+for (index, value) in journal {
+	if value == 5
+	{
+		journal[index] = nil
+	}
+}
+
+print(journal)
+
+journal["Kate"] = 4
+journal["Mike"] = 3
+print(journal)
+
+var sum = 0
+for (index, value) in journal {
+	sum += value
+}
+print("Average academic performance = \(sum / journal.count)")
 
 
 
