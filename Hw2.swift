@@ -126,3 +126,5 @@ print("Average academic performance = \(sum / journal.count)")
 
 
 
+
+
