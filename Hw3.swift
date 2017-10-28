@@ -88,3 +88,29 @@ print(filteredArr)
 
 
 //5
+
+
+
+//6
+enum chessFigures{
+	case king(color: String, cell: String)
+	case queen(color: String, cell: String)
+	case rook(color: String, cell: String)
+	case bishop(color: String, cell: String)
+	case knight(color: String, cell: String)
+	case pown(color: String, cell: String)
+}
+
+var chessDesk = [String : String]()
+let deskLabels = ["A", "B", "C", "D", "E", "F", "G", "H"]
+
+for i in 1..<9{
+	for j in 1..<9{
+		var label = deskLabels[i-1] + String(j)
+		chessDesk[label] = ( (i%2 != 0 && j%2 == 0) || (i%2 == 0 && j%2 != 0) ) ? "W" : "B"
+	}
+}
+print(chessDesk)
+
+
+var blackKing= chessFigures.king("Black", "E8")
