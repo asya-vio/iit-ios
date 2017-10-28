@@ -57,9 +57,34 @@ printColorOf(cell: "C5", from: chessDesk)
 var myNumbers = [1,2,3,4,5,6,7,8,9,0]
 print(myNumbers)
 
-func reversArray(array: inout [Int]){
+func reverseArray(array: inout [Int]){
 	array.reverse()
 }
 
-reversArray(array: &myNumbers)
+reverseArray(array: &myNumbers)
 print(myNumbers)
+
+
+//4
+let closureFunc : ([Int]) -> ([Int]) = {inArr -> ([Int]) in
+	var outArr = [Int]()
+	for i in 0..<inArr.count {
+		if (inArr[i] % 2 == 0 && inArr[i] % 3 == 0 && i % 2 != 0 && inArr[i] > 5){
+			outArr.append(inArr[i])			
+		}
+	}
+	return outArr
+}
+
+
+func filter(inArr : [Int], closure: ([Int]) -> ([Int])) -> ([Int]){
+	return closure(inArr)
+}
+
+var nonFilteredArr = [1, 6, 2, 7, 8, 12, 18]
+var filteredArr = filter(inArr: nonFilteredArr, closure: closureFunc)
+
+print(filteredArr)
+
+
+//5
