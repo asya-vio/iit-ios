@@ -167,13 +167,6 @@ class StudentClass {
 }
 	
 
-struct StudentStruct {
-	var Name: String
-	var LastName: String
-	var number: Int
-	var averageScore: Double
-}
-
 func printStudents(students :[StudentClass]) -> () {
 	for student in students{
 		print("Student:\(student.number) has average score: \(student.averageScore)")
@@ -186,5 +179,30 @@ studentsArr.append(StudentClass(name: "Mary", lastName: "unterweger", number: 2,
 
 printStudents(students: studentsArr)
 
-print(studentsArr[0].Name.characters.first?.description ?? "")
-print((studentsArr[0].Name[studentsArr[0].Name.index(studentsArr[0].Name.startIndex, offsetBy: 0)]))
+struct StudentStruct {
+	var Name: String
+	var LastName: String
+	var number: Int
+	var averageScore: Double
+	var fullName: String{
+			switch ((Name[Name.index(Name.startIndex, offsetBy: 0)]), 		
+			(LastName[LastName.index(LastName.startIndex, offsetBy: 0)])){
+				case ("A"..."Z", "A"..."Z") :
+					return "\(LastName) \(Name)"
+				default: return ""
+			}
+	}
+	
+}
+
+func printStudents(students :[StudentStruct]) -> () {
+	for student in students{
+		print("Student:\(student.number) has average score: \(student.averageScore)")
+	}
+}
+var studentsArrStruct = [StudentStruct]()
+
+studentsArrStruct.append(StudentStruct(Name: "Maxi", LastName: "Bauer", number: 1, averageScore: 4.1))
+studentsArrStruct.append(StudentStruct(Name: "Mary", LastName: "unterweger", number: 2, averageScore: 4.6))
+
+printStudents(students: studentsArrStruct)
