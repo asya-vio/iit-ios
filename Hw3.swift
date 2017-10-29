@@ -137,3 +137,54 @@ for i in 1..<9{
 		} 
 	}
 }
+
+//7
+
+//  Write some awesome Swift code, or import libraries like "Foundation",
+//  "Dispatch", or "Glibc"
+
+
+class StudentClass {
+	var Name: String
+	var LastName: String
+	var number: Int
+	var averageScore: Double
+	var fullName: String{
+			switch ((Name[Name.index(Name.startIndex, offsetBy: 0)]), 
+			(LastName[LastName.index(LastName.startIndex, offsetBy: 0)])){
+				case ("A"..."Z", "A"..."Z") :
+					return "\(LastName) \(Name)"
+				default: return ""
+			}
+	}
+	
+	init(name: String, lastName: String, number: Int, averageScore: Double) {
+    	self.Name = name
+    	self.LastName = lastName
+		self.number = number
+		self.averageScore = averageScore
+	}
+}
+	
+
+struct StudentStruct {
+	var Name: String
+	var LastName: String
+	var number: Int
+	var averageScore: Double
+}
+
+func printStudents(students :[StudentClass]) -> () {
+	for student in students{
+		print("Student:\(student.number) has average score: \(student.averageScore)")
+	}
+}
+var studentsArr = [StudentClass]()
+
+studentsArr.append(StudentClass(name: "Maxi", lastName: "Bauer", number: 1, averageScore: 4.1))
+studentsArr.append(StudentClass(name: "Mary", lastName: "unterweger", number: 2, averageScore: 4.6))
+
+printStudents(students: studentsArr)
+
+print(studentsArr[0].Name.characters.first?.description ?? "")
+print((studentsArr[0].Name[studentsArr[0].Name.index(studentsArr[0].Name.startIndex, offsetBy: 0)]))
