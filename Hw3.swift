@@ -101,16 +101,39 @@ enum chessFigures{
 	case pown(color: String, cell: String)
 }
 
-var chessDesk = [String : String]()
+
+var chessDesk = [String : chessFigures?]()
 let deskLabels = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
 for i in 1..<9{
 	for j in 1..<9{
-		var label = deskLabels[i-1] + String(j)
-		chessDesk[label] = ( (i%2 != 0 && j%2 == 0) || (i%2 == 0 && j%2 != 0) ) ? "W" : "B"
+		var label:String = deskLabels[j-1] + String(i)
+		switch (deskLabels[j-1], i ){
+			case (let char, 1) where char == "A" || char == "H":
+				chessDesk[label] = chessFigures.rook(color:"W", cell: label)
+			case (let char, 1) where char == "B" || char == "G":
+				chessDesk[label] = chessFigures.knight(color:"W", cell: label)
+			case (let char, 1) where char == "C" || char == "F": 
+				chessDesk[label] = chessFigures.bishop(color:"W", cell: label)
+			case (let char, 1) where char == "D":
+				chessDesk[label] = chessFigures.queen(color:"W", cell: label)
+			case (let char, 1) where char == "E":
+				chessDesk[label] = chessFigures.king(color:"W", cell: label)
+			case (_, 2):
+				chessDesk[label] = chessFigures.pown(color:"W", cell: label)
+			case (_, 7):
+				chessDesk[label] = chessFigures.pown(color:"B", cell: label)
+			case (let char, 8) where char == "A" || char == "H":
+				chessDesk[label] = chessFigures.rook(color:"B", cell: label)
+			case (let char, 8) where char == "B" || char == "G":
+				chessDesk[label] = chessFigures.knight(color:"B", cell: label)
+			case (let char, 8) where char == "C" || char == "F":
+				chessDesk[label] = chessFigures.bishop(color:"B", cell: label)
+			case (let char, 8) where char == "D":
+				chessDesk[label] = chessFigures.queen(color:"B", cell: label)
+			case (let char, 8) where char == "E":
+				chessDesk[label] = chessFigures.king(color:"E", cell: label)
+			default : chessDesk[label] = nil		
+		} 
 	}
 }
-print(chessDesk)
-
-
-var blackKing= chessFigures.king("Black", "E8")
